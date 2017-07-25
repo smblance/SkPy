@@ -583,7 +583,7 @@ class SkypeLiveAuthProvider(SkypeAuthProvider):
         expiryField = loginPage.find("input", {"name": "expires_in"})
         expiry = None
         if expiryField:
-            expiry = datetime.fromtimestamp(int(time.time()) + int(expiryField.get("value")))
+            expiry = datetime.fromtimestamp(int(time.time()) + int(expiryField.get("value"))*1000)
         return (token, expiry)
 
 
@@ -682,7 +682,7 @@ class SkypeRefreshAuthProvider(SkypeAuthProvider):
         expiryField = loginPage.find("input", {"name": "expires_in"})
         expiry = None
         if expiryField:
-            expiry = datetime.fromtimestamp(int(time.time()) + int(expiryField.get("value")))
+            expiry = datetime.fromtimestamp(int(time.time()) + int(expiryField.get("value"))*1000)
         return (token, expiry)
 
 
